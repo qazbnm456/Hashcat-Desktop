@@ -1,0 +1,7 @@
+# Ignore unneeded files.
+*.swp
+*~
+.project
+.DS_Store
+.vscode
+node_modules

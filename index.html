@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>Hashcat Desktop</title>
+  </head>
+  <body>
+    <h1 id="output">Hashcat Desktop</h1>
+    <div id="pid"></div>
+    <div>
+        <p>產生字串使用的字元: <input id="charset" type="text" size="40" value="?l"></p>
+        <p>產生字串的長度: <input id="length" type="text" size="2" value="7"></p>
+        <p>HASH值條件1: <input id="cond1" type="text" size="64" value="127e6fbfe24a750e72930c220a8e138275656b8e5d8f48a98c3c92df2caba935"></p>
+        <p>HASH值條件2: <input id="cond2" type="text" size="64"></p>
+        <p>HASH值條件3: <input id="cond3" type="text" size="64"></p>
+        <p>HASH值條件4: <input id="cond4" type="text" size="64"></p>
+        <p>HASH值條件5: <input id="cond5" type="text" size="64"></p>
+        <p>
+            <button type="button" id="start">開始運行</button>
+            <button type="button" id="stop">停止運行</button>
+            <button type="button" id="status">運行狀態</button>
+            <button type="button" id="generated">已產生字串組數</button>
+        </p>
+        <p>符合的字串: <input id="match_str" type="text" size="64"></p>
+        <p>符合HASH值: <input id="match_hash" type="text" size="64"></p>
+    </div>
+
+    <script type="text/javascript">
+      require('./renderer-process/send-datas')
+      require('./renderer-process/send-pid')
+      require('./renderer-process/send-status')
+      require('electron').ipcRenderer.on('ping', function(event, message) {
+        console.log(message)
+      })
+    </script>
+</html>
