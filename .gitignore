@@ -4,4 +4,7 @@
 .project
 .DS_Store
 .vscode
+test.hash
+hash.out
 node_modules
+out
